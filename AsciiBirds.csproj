@@ -32,6 +32,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FarseerPhysics, Version=3.3.4830.23660, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\FarseerPhysics.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -52,12 +56,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="README" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Farseer Physics Engine 3.3.1 Class\Farseer Physics.csproj">
-      <Project>{a4610e4c-dd34-428b-babb-779ca0b5993a}</Project>
-      <Name>Farseer Physics</Name>
-    </ProjectReference>
+    <Content Include="lib\FarseerPhysics.dll" />
+    <Content Include="lib\FarseerPhysics.pdb" />
+    <Content Include="lib\FarseerPhysics.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
