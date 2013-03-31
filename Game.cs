@@ -23,7 +23,7 @@ namespace AsciiBirds
         
         private Fixture _groundFix;
         private Bird _bird;
-        private readonly List<DynamicGameObject> _gameObjects = new List<DynamicGameObject>();
+        private readonly List<GameObject> _gameObjects = new List<GameObject>();
         private readonly Canvas _canvas;
 
         public Game()
@@ -35,7 +35,6 @@ namespace AsciiBirds
         {
             ViewportWidth = Console.WindowWidth;
             ViewportHeight = Console.WindowHeight;
-            
             
             /* Ground */
             var groundPosition = new Vector2(ViewportWidth/2f, ViewportHeight);
@@ -62,21 +61,21 @@ namespace AsciiBirds
             for (int i = 0; i < numberOfBoxes; i++)
             {
                 _gameObjects.Add(new Box(
-                    DynamicGameObject.CreateDynamicBody(
+                    GameObject.CreateDynamicBody(
                         _world, ViewportWidth - 30, ViewportHeight - 1 - i, awake:false, restitution:0f, density: 2f)));
-                _gameObjects.Add(new Box(DynamicGameObject.CreateDynamicBody(
+                _gameObjects.Add(new Box(GameObject.CreateDynamicBody(
                         _world, ViewportWidth - 31, ViewportHeight - 1 - i, awake: false, restitution: 0f, density: 2f)));
                 _gameObjects.Add(
-                    new Box(DynamicGameObject.CreateDynamicBody(
+                    new Box(GameObject.CreateDynamicBody(
                         _world, ViewportWidth - 32, ViewportHeight - 1 - i, awake: false, restitution: 0f, density: 2f)));
             }
 
             _gameObjects.Add(
                 new Pig(
-                    DynamicGameObject.CreateDynamicBody(_world, ViewportWidth - 31, ViewportHeight - 11, awake: false, restitution: 0.0f)));
+                    GameObject.CreateDynamicBody(_world, ViewportWidth - 31, ViewportHeight - 11, awake: false, restitution: 0.0f)));
             
             //Create a bird
-            _bird = new Bird(DynamicGameObject.CreateDynamicBody(_world, 0, ViewportHeight - 1, awake: false, restitution: 0.6f));
+            _bird = new Bird(GameObject.CreateDynamicBody(_world, 0, ViewportHeight - 1, awake: false, restitution: 0.6f));
             _gameObjects.Add(_bird);
             
         }
@@ -126,7 +125,7 @@ namespace AsciiBirds
                 {
                     _gameObjects.Remove(_bird);
                     _bird = new Bird(
-                        DynamicGameObject.CreateDynamicBody(_world, 0, ViewportHeight - 1, awake: false, restitution: 0.6f));
+                        GameObject.CreateDynamicBody(_world, 0, ViewportHeight - 1, awake: false, restitution: 0.6f));
                     _gameObjects.Add(_bird);
                 }
                 else if (keyInfo.Key == ConsoleKey.Escape)
@@ -151,7 +150,7 @@ namespace AsciiBirds
         {
             _canvas.Clear();
 
-            _canvas.DrawGround(_groundFix, (int) ViewportWidth, _bird.Angle, _bird.Power);
+            _canvas.DrawGround(_groundFix, (int) ViewportWidth-1, _bird.Angle, _bird.Power);
 
             foreach (var gameObj in _gameObjects)
             {

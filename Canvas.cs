@@ -23,9 +23,9 @@ namespace AsciiBirds
         {
             Console.BackgroundColor = ConsoleColor.Green;
 
-            Console.SetCursorPosition(0, (int) fixture.Body.Position.Y-1);
+            Console.SetCursorPosition(0, (int) Math.Floor( fixture.Body.Position.Y-1 ));
             var str = new StringBuilder();
-            for(int i=0; i<width-1; i++) str.Append(' ');
+            for(int i=0; i<width; i++) str.Append(' ');
             
             Console.WriteLine(str);
             Console.ResetColor();
